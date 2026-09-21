@@ -1,0 +1,177 @@
+{
+  "created_at": "2026-09-21T17:41:15.014Z",
+  "source_commit": "e041f89fa2f968f8c7b25b23f3921e16f068b357",
+  "source_hashes": {
+    "package.json": "7b3f270740bd4be1e9565786128e2721977e5b344c2d5b87237c0d283a984aa5",
+    "package-lock.json": "ebfbdb1957cf6816b94019ceddfdffb108529f4ce57ef43e3efaa369e748a0bd",
+    "index.html": "b6d2c4ce2ceab97e634b321b12cffeea01140c5ee3cb0f4bab00fbfc9794b3bd",
+    "tsconfig.json": "92378d54fccf14b1f0c6123e05e0e99014ecc39dcac6b329a1f90d2993a8fde7",
+    "src/app.ts": "51e00a532b94a7c3b180d0342f4a06e096cd5ab13797c778a7441c710220908e",
+    "src/ui.css": "e2ece7c3c36cc1b2adf8a3df60faa1734a9443f9ccf831f0d3310cd56988244f",
+    "src/districts.ts": "ad7aa77f2255e145675a1680862961105c7dc9383fc41afd619dd36d4a29c866",
+    "src/world/city.ts": "938a984d1661c5c03d3ceba04dca10c805741e77ac1d20cade0d59c6c05730fc",
+    "src/sim/model.ts": "e5a5b1fbc4f21f13a9242543200c7732a8b841eadd4a221805c7e49a8bafc4d0",
+    "tools/record-city.mjs": "a757c8ca552675e5416e4cde645441646031495a3c59fecead57a52799633001"
+  },
+  "build_index_sha256": "d944d3da951cb8a8c0e63b89070a3c24281cf131945ba80bd1aeeaed6e1955ed",
+  "mode": "Actual browser captures of the deterministic fixture simulation, not Jev inference or real-time performance.",
+  "viewport": {
+    "width": 1280,
+    "height": 980
+  },
+  "fps": 3,
+  "unique_frames": 15,
+  "video": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 1280,
+        "height": 980,
+        "nb_read_frames": "45"
+      }
+    ],
+    "format": {
+      "duration": "15.000000",
+      "size": "386570"
+    }
+  },
+  "artifacts": {
+    "jev-city.gif": {
+      "bytes": 386570,
+      "sha256": "e8c4ccfcaeadc45f17e0b9e0d49a12761102bf64e8d521027f3a8e1635b913fc"
+    },
+    "city-desktop.png": {
+      "bytes": 211152,
+      "sha256": "210531ac61edded12b5ba934263be44e095894c3a75ac0e7a39a71bb1da12621"
+    },
+    "city-mobile.png": {
+      "bytes": 142026,
+      "sha256": "f4c5ffb2c458678bf89686bfd52b262f185adfeb884d7f8d87690d899c6060d6"
+    }
+  },
+  "states": [
+    {
+      "label": "Shared state ready",
+      "phase": "ready",
+      "scenario": "outage",
+      "outcome": "pending",
+      "tick": "0",
+      "screenshot_sha256": "c5ad566071e50fee13b9ae88b5b4bb770f18e1216236acb235006bef7074a69e"
+    },
+    {
+      "label": "Dispatch",
+      "phase": "dispatch",
+      "scenario": "outage",
+      "outcome": "pending",
+      "tick": "2",
+      "screenshot_sha256": "0c3a3d903a590ce28a01fdd16a977b08d95c9bd9b7214046d49554812deaba7c"
+    },
+    {
+      "label": "Questions",
+      "phase": "questions",
+      "scenario": "outage",
+      "outcome": "pending",
+      "tick": "3",
+      "screenshot_sha256": "da81df3a8836335065dad2a147528dae5d9d8c8f5b931244febaa2819ab78733"
+    },
+    {
+      "label": "Answers",
+      "phase": "answers",
+      "scenario": "outage",
+      "outcome": "pending",
+      "tick": "4",
+      "screenshot_sha256": "dd52cf260358f05ecaac5ad08f20e68af0d5d097cd749ae84aa85a8ca3985b47"
+    },
+    {
+      "label": "Policy",
+      "phase": "policy",
+      "scenario": "outage",
+      "outcome": "pending",
+      "tick": "5",
+      "screenshot_sha256": "e63164d78b90ab375fb27b5c28a7745416fbffb8d90391d0b9a490dd35d0848f"
+    },
+    {
+      "label": "Route",
+      "phase": "route",
+      "scenario": "outage",
+      "outcome": "pending",
+      "tick": "6",
+      "screenshot_sha256": "7373985ad3a963c41efdad04bb9006966135113d96557dfc644fab06e512512b"
+    },
+    {
+      "label": "Gate",
+      "phase": "gate",
+      "scenario": "outage",
+      "outcome": "passed",
+      "tick": "7",
+      "screenshot_sha256": "330d471fb729d429b384b4cbbbf10d6e58751491f1119457ed3dae70aaa48b7c"
+    },
+    {
+      "label": "Outcome",
+      "phase": "complete",
+      "scenario": "outage",
+      "outcome": "passed",
+      "tick": "8",
+      "screenshot_sha256": "4fbf36603ec29e513c7d86074aac3ac3a56e7d389b9689b86476cfe6ef3563d3"
+    },
+    {
+      "label": "Choice inspector and typed response code",
+      "phase": "answers",
+      "scenario": "outage",
+      "outcome": "pending",
+      "tick": "4",
+      "screenshot_sha256": "f57edeb4d935322ed43ca0113e9e45a2f08c63fcb1d717bc56f31bba0bb8dd7c"
+    },
+    {
+      "label": "ambiguous: review",
+      "phase": "complete",
+      "scenario": "ambiguous",
+      "outcome": "review",
+      "tick": "8",
+      "screenshot_sha256": "59232a8800eb72ce367acbe31561a44f0da6fc0e0a9a919615e27ab2953a1f99"
+    },
+    {
+      "label": "high-risk: blocked",
+      "phase": "complete",
+      "scenario": "high-risk",
+      "outcome": "blocked",
+      "tick": "8",
+      "screenshot_sha256": "cd493dac0235265219b3fb4f7e2d1e6c513b623b02474e159afb4253adb91e72"
+    },
+    {
+      "label": "failure: error",
+      "phase": "complete",
+      "scenario": "failure",
+      "outcome": "error",
+      "tick": "8",
+      "screenshot_sha256": "124a50da92dccb00a56886d7c060d44ec430b20b643c2367cc0d7583ad25da4e"
+    },
+    {
+      "label": "unlisted: bypass",
+      "phase": "complete",
+      "scenario": "unlisted",
+      "outcome": "bypass",
+      "tick": "8",
+      "screenshot_sha256": "61f348a2ad5a7bdf3d2db515ed47fb719d499aba5edb3ab8c57a1bb86ca4c5ac"
+    },
+    {
+      "label": "Evaluation at 0.80: one true positive and one false positive",
+      "phase": "complete",
+      "scenario": "unlisted",
+      "outcome": "bypass",
+      "tick": "8",
+      "screenshot_sha256": "18279005b418de70a5a90ba1bd9d6838ee490ea3713e01347a4b7466c59a3692"
+    },
+    {
+      "label": "Evaluation at 0.95: Brier unchanged",
+      "phase": "complete",
+      "scenario": "unlisted",
+      "outcome": "bypass",
+      "tick": "8",
+      "screenshot_sha256": "c93d9d7f7a1e69fa58120b65a9767de7a42595ba1bd9a3a90953c6b2d845d73c"
+    }
+  ],
+  "external_requests": [],
+  "page_errors": []
+}

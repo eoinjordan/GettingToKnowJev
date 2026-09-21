@@ -6,7 +6,56 @@ Based on the ideas in LangChain's [Building a Harness with Jev](https://www.lang
 
 **Start offline.** The runnable demonstrations use the real `langchain-typesafe` client and experimental middleware with a mock HTTP transport, synthetic answers and fake chat models. They make no network calls, execute no shell tools, and do not claim Jev accuracy, inference speed or cost savings. A separate live command makes one explicitly authorized TypeSafe request.
 
-## Quick Start
+## Jev City
+
+An interactive Three.js city follows shared state through one typed-question request, Choice / Noul / Score answers, application policy, model routing, tool-risk gating and the final outcome.
+
+![Jev City animated walkthrough: typed answers, routing, review, blocked tools and evaluation](docs/media/jev-city.gif)
+
+With Node.js 24 installed, run from this directory:
+
+```bash
+npm ci
+npm run dev -- --port 5198
+```
+
+Open [Jev City locally](http://127.0.0.1:5198/). The browser simulation does not require Python, model weights, an API key or the live service. Fonts and runtime assets are served locally. The Python walkthrough below remains the executable reference for the actual integration.
+
+- Play, pause, step or select a stage. City and Plan views support orbiting, zooming and framing; reduced-motion preferences disable automatic playback.
+- Select a district for its role and associated Python-style code. The three answer displays separate probabilities, confidence and the Score's weighted mean.
+- Change the application thresholds, inspect the classifier-call ledger, and export a JSON snapshot. The evaluation panel uses the same six synthetic labeled cases as `walkthrough.py eval`.
+
+| Fixture | Default outcome | Modelled classifier calls | Recording-only handler calls |
+| --- | --- | --- | --- |
+| Checkout outage | Powerful-model route, gate passes | 3 | 1 |
+| Ambiguous ticket | Human review before routing | 1 | 0 |
+| Routine lookup | Fast-model route, gate passes | 3 | 1 |
+| Risky proposed action | Gate blocks | 3 | 0 |
+| Classifier unavailable | Gate error, no handler call | 3 | 0 |
+| Unlisted tool | Risk classification bypassed | 2 | 1 |
+
+**What the model represents:** the initial triage request contains three questions. The model router and tool-risk gate each make a **separate** modelled request. City stages, building heights and moving packets illustrate data and control flow, not neural-network internals, hardware placement or measured latency. Answers and model choices are predefined fixtures, not predictions derived from arbitrary text. Changing a policy threshold changes the decision, not the fixture probabilities. The tool handler is only a counter; the unlisted-tool case exposes the pinned middleware's bypass behavior, not a recommended authorization policy.
+
+The evaluation threshold changes precision, recall and confusion counts. It does not change the underlying probabilities, so the synthetic Brier score stays **0.18625**. These six cases do not measure Jev accuracy or calibration.
+
+[Desktop screenshot](docs/media/city-desktop.png) / [Mobile screenshot](docs/media/city-mobile.png)
+
+### City Verification And Recording
+
+```bash
+npm run test
+npm run typecheck
+npx playwright install chromium
+npm run test:browser
+npm run build
+npm audit --audit-level=high
+```
+
+Eight model tests and eight production-browser tests cover all six outcomes, call counts, thresholds, typed answers, snapshots, keyboard tabs, reduced motion, pause, mobile layout, whole-city framing, nonblank/moving canvas pixels and the no-WebGL fallback. The production browser tests also check that page loading makes no external requests and works under a URL subpath. CI runs the Python and city checks separately.
+
+To regenerate the GIF and screenshots, install FFmpeg (including `ffprobe`) and the Playwright Chromium browser, then run `npm run record`. The [recorder](tools/record-city.mjs) builds the app, captures actual browser states and verifies desktop/mobile pixels and layout. The 45-frame GIF is an edited, stepped demonstration at 3 fps, **not a real-time inference recording**. [Recording metadata](docs/media/city-recording.json) retains source/artifact hashes, captured states and request/error checks. Its base commit precedes the media update; the per-file hashes identify the recorded source.
+
+## Python Quick Start
 
 From this directory, with [uv](https://docs.astral.sh/uv/) installed:
 
@@ -70,6 +119,11 @@ The default router classifies the **latest human message once per agent run**, s
 
 ## Layout
 
+- [src/sim/model.ts](src/sim/model.ts): deterministic decision model, fixture scenarios and evaluation arithmetic.
+- [src/world/city.ts](src/world/city.ts): Three.js districts, probability towers, packet animation and camera framing.
+- [src/app.ts](src/app.ts): playback, thresholds, inspector, evaluation and snapshot controls.
+- [src/districts.ts](src/districts.ts): district explanations and associated code snippets.
+- [src/sim/model.test.ts](src/sim/model.test.ts) and [tests/city.spec.ts](tests/city.spec.ts): model and browser checks.
 - [walkthrough.py](walkthrough.py): all executable examples and explicit offline/live boundaries.
 - [docs/walkthrough.md](docs/walkthrough.md): sequential concepts, code, diagrams and evaluation exercises.
 - [tests/test_walkthrough.py](tests/test_walkthrough.py): offline tests; no API keys or network required.
